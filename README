@@ -1,0 +1,11 @@
+climate_tools_v2.py - This is a file of functions that is called by the temperature probability script.
+
+daily_climate_stats_1_0.py - This script computes the statistics that are valid on each calendar date of a year. It also generates daily histograms and plots the calendar date stats for an entire year.
+
+temperature_probability_1_1.py - This script computes the probability of temperatures occurring within a specified range on a certain calendar date as well as exceedance probablities for highs and lows.
+
+A more detailed explanation for each file is given within each .py file.
+
+Required libraries: numpy, scipy, matplotlib, and pandas.
+
+User assumes all liability and risk associated with using this code. This code is my own and is not endorsed by any agency or organization whatsoever.
