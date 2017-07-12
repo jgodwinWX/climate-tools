@@ -14,6 +14,8 @@ lows = df['lows']
 datetimes = [datetime.datetime.strptime(x,'%m/%d/%Y') for x in dates]
 
 # create the lists
+months = ['January','February','March','April','May','June','July','August','September',\
+    'October','November','December']
 jan = []
 feb = []
 mar = []
@@ -69,6 +71,8 @@ for i in range(len(list_of_lists)):
     monthly_upper.append(np.percentile(list_of_lists[i],90.0))
     monthly_lower.append(np.percentile(list_of_lists[i],10.0))
 
+# write results to a CSV
+
 # plot the results
 fig = plt.figure(figsize=(16,12),dpi=80,edgecolor="k")
 ax = fig.add_subplot(1,1,1)
@@ -85,7 +89,7 @@ plt.plot(dummies,monthly_upper,color="red",linestyle="-",linewidth=4.0,label="90
 plt.plot(dummies,monthly_lower,color="blue",linestyle="-",linewidth=4.0,label="10th Percentile")
 plt.plot(dummies,monthly_avg,color="black",linestyle="-",linewidth=4.0,label="Mean")
 # plot aesthetics
-plt.xticks(dummies,['J','F','M','A','M','J','J','A','S','O','N','D'],rotation=90)
+plt.xticks(dummies,months,rotation=90)
 plt.xlim([0,11])
 plt.ylim([30,100])
 plt.xlabel("Month")
