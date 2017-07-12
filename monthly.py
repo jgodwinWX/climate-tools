@@ -72,11 +72,12 @@ for i in range(len(list_of_lists)):
     monthly_lower.append(np.percentile(list_of_lists[i],10.0))
 
 # write results to a CSV
-data = {'Month':months,'Average':monthly_avg,'StDev':monthly_std,'25th Pct':monthly_lower,\
+dataset = {'Month':months,'Average':monthly_avg,'StDev':monthly_std,'25th Pct':monthly_lower,\
     '75th Pct':monthly_upper}
-outdata = pandas.DataFrame(data=data,index=months)
+outdata = pandas.DataFrame(data=dataset,index=months)
+outdata = outdata[['Month','Average','StDev','25th Pct','75th Pct']]
 outdata.to_csv("dfw_monthly.csv",header=['Month','Average','StDev','25th Pct','75th Pct'],\
-    index=True)
+    index=False)
 
 # plot the results
 fig = plt.figure(figsize=(16,12),dpi=80,edgecolor="k")
