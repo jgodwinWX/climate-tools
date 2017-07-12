@@ -72,6 +72,11 @@ for i in range(len(list_of_lists)):
     monthly_lower.append(np.percentile(list_of_lists[i],10.0))
 
 # write results to a CSV
+data = {'Month':months,'Average':monthly_avg,'StDev':monthly_std,'25th Pct':monthly_lower,\
+    '75th Pct':monthly_upper}
+outdata = pandas.DataFrame(data=data,index=months)
+outdata.to_csv("dfw_monthly.csv",header=['Month','Average','StDev','25th Pct','75th Pct'],\
+    index=True)
 
 # plot the results
 fig = plt.figure(figsize=(16,12),dpi=80,edgecolor="k")
@@ -85,8 +90,8 @@ ax.grid(which="both")
 ax.grid(which="major",alpha=1.0)
 ax.grid(which="minor",alpha=0.2)
 dummies = np.arange(len(list_of_lists))
-plt.plot(dummies,monthly_upper,color="red",linestyle="-",linewidth=4.0,label="90th Percentile")
-plt.plot(dummies,monthly_lower,color="blue",linestyle="-",linewidth=4.0,label="10th Percentile")
+plt.plot(dummies,monthly_upper,color="red",linestyle="-",linewidth=4.0,label="75th Percentile")
+plt.plot(dummies,monthly_lower,color="blue",linestyle="-",linewidth=4.0,label="25th Percentile")
 plt.plot(dummies,monthly_avg,color="black",linestyle="-",linewidth=4.0,label="Mean")
 # plot aesthetics
 plt.xticks(dummies,months,rotation=90)
